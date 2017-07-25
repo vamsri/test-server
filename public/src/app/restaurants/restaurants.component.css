@@ -1,0 +1,15 @@
+.jumbotron {
+	background-image: url("./../../assets/Charminar.jpg");
+	background-size: cover;
+	height: 500px;
+}
+.row form{
+	margin-top: 60px;
+}
+.col-md-4.HotelDetails{
+	margin-top: 2px;
+}
+.col-md-4.HotelControls{
+	padding-left: 30px;
+	margin-top: 70px;
+}

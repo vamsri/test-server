@@ -1,0 +1,79 @@
+<div class="container-fuild">
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			<form (ngSubmit)="onGet(f)" #f="ngForm">
+				<div class="form-group">
+					<input placeholder="Enter Area Pincode" type="pincode" id="pincode" name="pincode" ngModel class="form-control">
+				</div>	
+				<div class="col-xs-4 col-sm-4 col-md-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4">
+					<button class="btn btn-primary" type="submit">Search Hotel</button>
+				</div>
+			</form>		
+		</div>
+	</div>
+	<hr>
+	<div class="row" >
+	  <div class="col-md-3" *ngFor="let item of pagedItems">
+      <a style="cursor: pointer;">
+        <img src="/assets/{{ item.pincode }}/Hotels/{{ item.name }}.jpg" alt="Lights" width="200" height="140"  (click)="onSelectRestaurant(item.pincode,item.name)">
+        <div class="caption">
+          <p>{{ item.name }}</p>
+        </div>
+      </a>
+	  </div>
+    </div>
+	<!--ul class="list-group"-->
+		<!--li class="list-group-item" *ngFor="let item of pagedItems">
+			<div class="controller">
+				<div class="row">				
+					<div class="col-md-4">
+						<img src="/assets/{{ item.pincode }}/Hotels/{{ item.name }}.jpg" alt="" class="img-rounded" width="200" height="140">
+						<p>{{ item.name }}</p>
+					</div>
+					<div class="col-md-4 HotelDetails">
+						 <thead>
+					      <tr>
+					        <th>Hotel</th>
+					      </tr>
+					    </thead>
+						<table class="table">					    
+						    <tbody>
+						      <tr>
+						        <td>Name</td><td>{{ item.name }}</td>
+						      </tr>
+						      <tr>
+						        <td>Contact</td><td>{{ item.contact }}</td>
+						      </tr>
+						      <tr>
+						        <td>Pincode</td><td>{{ item.pincode }}</td>
+						      </tr>					     
+						    </tbody>
+						  </table>
+					</div>
+					<div class="col-md-4 HotelControls">
+						<button class="btn btn-primary" >Add To Cart</button>
+						<button class="btn btn-danger" (click)="onDeleteItem(item)">Delete</button>
+					</div>
+				</div>
+			</div>
+		</li-->
+		<!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
+	<!--/ul-->	
+</div>
